@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      #my-modal {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: white;
+        padding: 20px;
+        border-radius: 5px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+      }
+    </style>
+  </head>
+  <body>
+    <div id="dashboard">
+
+      <!-- sorting -->
+      <button onclick="handleLow()">LTH</button>
+      <button onclick="handleHigh()">HTL</button>
+      <button onclick="handleStudent()">Student</button>
+      <button onclick="handleEmployee()">Employee</button>
+
+      <table id="table">
+        <thead>
+          <tr>
+            <th>name</th>
+            <th>Start Date</th>
+            <th>End Date</th>
+            <th>Reject</th>
+            <th>Accept</th>
+            <th>OTP</th>
+          </tr>
+        </thead>
+        <tbody id="tableBody">
+                 <!-- <tr>
+                   <td>text1.1</td>
+                   <td>text1.2</td>
+                   <td>text1.3</td>
+                 </tr>-->
+        </tbody>
+      </table>
+
+      <div id="my-modal" style="display: none"></div>
+    </div>
+  </body>
+  <script>
+    let tableBody = document.getElementById("tableBody");
+    let data = JSON.parse(localStorage.getItem("leaveRequest")) || [];
+
+    const openModalButton = document.getElementById("open-modal");
+    const closeModalButton = document.getElementById("close-modal");
+    const modal = document.getElementById("my-modal");
+
+    function userLeaveList(data) {
+      tableBody.innerHTML = null;
+
+      data.forEach((el, index) => {
+        let row = document.createElement("tr");
+
+        let name = document.createElement("td");
+        name.innerText = el.username;
+        let startDate = document.createElement("td");
+        startDate.innerText = el.startDate;
+        let endDate = document.createElement("td");
+        endDate.innerText = el.endDate;
+        let rejectButton = document.createElement("td");
+        rejectButton.innerText = "Reject";
+        rejectButton.addEventListener("click", () => {
+          handleReject(data, index);
+        });
+        let acceptButton = document.createElement("td");
+        acceptButton.innerText = "Accept";
+        acceptButton.id = "open-modal";
+        acceptButton.addEventListener("click", () => {
+          handleAccept(el);
+        });
+        let otp = document.createElement("td");
+        otp.innerText = el.otp;
+
+        row.append(name, startDate, endDate, rejectButton, acceptButton, otp);
+
+        tableBody.append(row);
+      });
+    }
+
+    const handleReject = (data, index) => {
+      let rejectedLeave =
+        JSON.parse(localStorage.getItem("rejecteddata")) || [];
+      rejectedLeave.push(data[index]);
+      localStorage.setItem("rejecteddata", JSON.stringify(rejectedLeave));
+
+      data.splice(index, 1);
+      localStorage.setItem("leaveRequest", JSON.stringify(data));
+
+      userLeaveList(data);
+    };
+
+    const handleAccept = (el) => {
+      modal.style.display = "block";
+      // console.log(el);
+      let div = document.createElement("div");
+      let Applicant = document.createElement("p");
+      Applicant.innerText = el.username;
+
+      let from = document.createElement("p");
+      from.innerText = el.startDate;
+
+      let to = document.createElement("p");
+      to.innerText = el.endDate;
+
+      let input = document.createElement("INPUT");
+      input.setAttribute("type", "number");
+      input.id = "otp";
+
+      let button = document.createElement("button");
+      button.innerText = "verify otp";
+      button.addEventListener("click", () => {
+        verifyOTP(el);
+      });
+
+      let close = document.createElement("button");
+      close.innerText = "close";
+      close.id = "close-modal";
+      close.addEventListener("click",()=>{
+        modal.style.display = "none";
+        modal.innerHTML = null;
+      })
+
+      div.append(Applicant, from, to, input, button, close);
+      modal.append(div);
+    };
+
+    
+
+    const verifyOTP = (el) => {
+      const inputOTP = document.getElementById("otp");
+      if (el.otp == inputOTP.value) {
+        let acceptedLeave =
+          JSON.parse(localStorage.getItem("accepteddata")) || [];
+        acceptedLeave.push(el);
+        localStorage.setItem("accepteddata", JSON.stringify(acceptedLeave));
+        alert("successful");
+        modal.style.display = "none";
+        let newData = data.filter((element) => {
+          return element.id != el.id;
+        });
+        localStorage.setItem("leaveRequest", JSON.stringify(newData));
+        userLeaveList(newData);
+        modal.innerHTML = null;
+      } else {
+        alert("wrong otp");
+      }
+    };
+
+    const handleLow = () => {
+      let data = JSON.parse(localStorage.getItem("leaveRequest")) || [];
+      data.sort((a,b)=>a.totalLeaves-b.totalLeaves);
+      console.log(data)
+      userLeaveList(data)
+    }
+
+    const handleHigh = () => {
+      let data = JSON.parse(localStorage.getItem("leaveRequest")) || [];
+      data.sort((a,b)=>b.totalLeaves-a.totalLeaves);
+      console.log(data)
+      userLeaveList(data)
+    }
+
+    const handleStudent = () => {
+      let Student = data.filter((el)=>{
+        return el.Designation == "Student"
+      })
+      userLeaveList(Student)
+    }
+
+    const handleEmployee = () => {
+      let emp = data.filter((el)=>{
+        return el.Designation == "Employee"
+      })
+      userLeaveList(emp)
+    }
+
+    
+
+    userLeaveList(data);
+  </script>
+</html>

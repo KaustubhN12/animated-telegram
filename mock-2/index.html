@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>mock 2</title>
+    <link rel="stylesheet" href="./index.css"/>
+</head>
+<body>
+
+    <div class="parent-div">
+      <a href="./dashboard.html">dashboard</a>
+
+       <form id="formData" onsubmit="submitHandle(event)">
+        <label for="css">NAME</label><br>
+        <input id="username" minlength="4" type="text"><br>
+
+        <input type="radio" id="Employee" name="Employee" value="Employee">
+        <label for="Employee">Employee</label><br>
+        <input type="radio" id="Student" name="Student" value="Student">
+        <label for="Student">Student</label><br>
+
+        <label for="css">Start date</label><br>
+        <input id="startDate" min="2023-04-14" type="date"/><br>
+        <label for="css">end date</label><br>
+        <input  id="endDate" type="date"/><br>
+        <select>
+          <option value="">select</option>
+          <option value="Manager">Manager</option>
+          <option value="EC">EC</option>
+          <option value="HR">HR</option>
+        </select><br>
+        <input type="submit"/>
+       </form>
+
+    </div>
+    
+</body>
+<script src="./index.js"></script>
+</html>
