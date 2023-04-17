@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="register">
+
+        <form id="registerform" onsubmit="registerHotel(event)">
+            <input type="text" placeholder="Category" id="category">
+            <br>
+            <input type="text" placeholder="Image" id="image">
+            <br>
+            <input type="number" placeholder="price" id="price">
+            <br>
+            
+            
+            <input type="submit">
+        </form>
+
+    </div>
+</body>
+</html>
+
+
+<script>
+
+  async function registerHotel(e){
+    e.preventDefault()
+  let category = document.getElementById("category").value
+  let img = document.getElementById("image").value
+  let price = document.getElementById("price").value
+
+  let obj={
+    category,
+    img,
+    price: +price,
+    booked:false
+  }
+  let res = await fetch(`http://localhost:8080/hotels`,{
+        method:"POST",
+        body: JSON.stringify(obj),
+        headers:{
+            "Content-type":'application/json'
+        }
+
+       })
+
+       res = await res.json()
+       alert("Hotel is added")
+  }
+
+
+</script>

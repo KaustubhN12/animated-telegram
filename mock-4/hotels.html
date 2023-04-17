@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+      
+    </style>
+</head>
+<body>
+      <label for="asc">Low to High</label>
+    <input type="radio" value="ascending" name="sorting" id="asc" onchange="Sorting(event)" >
+    <label for="desc">High to Low</label>
+    <input type="radio" value="descending" name="sorting" id="desc" onchange="Sorting(event)" >
+
+  <select  id="select" onchange="filterData(event)">
+    <option value="select">Select</option>
+    <option value="family">Family</option>
+    <option value="Adults">Adults</option>
+    <option value="Couples">Couples</option>
+  </select>
+    <div id="container">
+   
+    </div>
+    
+</body>
+</html>
+<script src = "./hotels.js"></script>

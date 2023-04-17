@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #container{
+            display:flex;
+            gap:20px;
+            margin: auto;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #loginform{
+            display: flex;
+            flex-direction: column;
+          
+            display: none;
+        }
+        #registerform{
+            display: flex;
+            flex-direction: column;
+            
+        }
+        #login{
+            gap: 20px;
+            display: flex;
+            flex-direction: column;
+        }
+        #register{
+            gap: 20px;
+            display: flex;
+            flex-direction: column;
+        }
+        #btns{
+            display: flex;
+            border: 1px solid black;
+            margin: auto;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            padding: 5px;
+        }
+    </style>
+</head>
+<body>
+    
+    <div id="btns">
+
+        <button id="logbtn">
+    
+            Login Form
+        </button>
+        <button id="regbtn">
+    
+            Register Form
+        </button>
+    </div>
+  
+    <div id="container">
+
+
+          <div id="login">
+            <form id="loginform" onsubmit="login(event)">
+                <input type="email" placeholder="Email" id="loginemail">
+                <br>
+                <input type="password" placeholder="password" id="loginpassword">
+                <br>
+               <input type="submit">
+            </form>
+
+        </div>
+
+            <div id="register">
+
+                <form id="registerform" onsubmit="register(event)">
+                    <input type="text" placeholder="Username" id="registername">
+                    <br>
+                    <input type="email" placeholder="Email" id="registeremail">
+                    <br>
+                    <input type="password" placeholder="password" id="registerpassword">
+                    <br>
+                    <input type="password" placeholder="Repeat-password" id="repeatpassword">
+                    <br>
+                    <input type="submit">
+                </form>
+
+            </div>
+
+
+
+    </div>
+
+
+</body>
+</html>
+
+<script src="./index.js" >
+
+   
+
+   
+    
+
+</script>
