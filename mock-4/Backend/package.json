@@ -4,6 +4,6 @@
     
   },
   "scripts": {
-    "start":"json-server --watch db.json"
+    "start" : "node server.js"
   }
 }
