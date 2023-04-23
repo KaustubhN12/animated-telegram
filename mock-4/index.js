@@ -56,7 +56,7 @@ password
 
     else{
         
-        let res = await fetch(`http://localhost:8080/users`)
+        let res = await fetch(`https://different-blue-kilt.cyclic.app/users`)
        
  
         
@@ -111,7 +111,7 @@ password
     pass1,
     
    }
-   let res = await fetch(`http://localhost:8080/users`,{
+   let res = await fetch(`https://different-blue-kilt.cyclic.app/users`,{
     method:"POST",
     body: JSON.stringify(obj),
     headers:{
