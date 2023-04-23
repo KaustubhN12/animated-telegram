@@ -56,7 +56,11 @@ password
 
     else{
         
+<<<<<<< HEAD
         let res = await fetch(`https://different-blue-kilt.cyclic.app/users`)
+=======
+        let res = await fetch(`https://brandstore.onrender.com/users`)
+>>>>>>> 572d244d43ac6406c1fdfdf8571a215d25f25472
        
  
         
@@ -111,7 +115,11 @@ password
     pass1,
     
    }
+<<<<<<< HEAD
    let res = await fetch(`https://different-blue-kilt.cyclic.app/users`,{
+=======
+   let res = await fetch(`https://brandstore.onrender.com/users`,{
+>>>>>>> 572d244d43ac6406c1fdfdf8571a215d25f25472
     method:"POST",
     body: JSON.stringify(obj),
     headers:{

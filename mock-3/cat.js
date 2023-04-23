@@ -3,7 +3,7 @@ const param1Value = params.get('breed');
 
 
 // use the search parameters
-console.log(param1Value); // outputs "value1"
+console.log(param1Value,window.location.search); // outputs "value1"
 
 let url  = `https://api.thecatapi.com/v1/images/search?limit=10&breed_ids=${param1Value}`
 
