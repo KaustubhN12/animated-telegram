@@ -2,7 +2,7 @@
 
 let box = document.getElementById("container")
 
-let url = "http://localhost:8080/hotels"
+let url = "https://impossible-eel-kimono.cyclic.app/hotels"
 window.addEventListener("load",()=>{
     fetchData(url)
 })
@@ -12,11 +12,11 @@ function Sorting(e){
     let select = document.getElementById("select").value
     console.log(e.target.value)
     if(e.target.value=="ascending"){
-        url= `http://localhost:8080/hotels?_sort=price&_order=asc&category=${select}`
+        url= `https://impossible-eel-kimono.cyclic.app/hotels?_sort=price&_order=asc&category=${select}`
         fetchData(url)
     }
     else if(e.target.value=="descending"){
-        url= `http://localhost:8080/hotels?_sort=price&_order=desc&category=${select}`
+        url= `https://impossible-eel-kimono.cyclic.app/hotels?_sort=price&_order=desc&category=${select}`
         fetchData(url)
     }
 
@@ -24,15 +24,15 @@ function Sorting(e){
 
  function filterData(e){
     if(e.target.value=="family"){
-        url= `http://localhost:8080/hotels?category=family`
+        url= `https://impossible-eel-kimono.cyclic.app/hotels?category=family`
         fetchData(url)
     }
     else if(e.target.value=="Adults"){
-        url= `http://localhost:8080/hotels?category=Adults`
+        url= `https://impossible-eel-kimono.cyclic.app/hotels?category=Adults`
         fetchData(url)
     }
     else{
-        url= `http://localhost:8080/hotels?category=Couples`
+        url= `https://impossible-eel-kimono.cyclic.app/hotels?category=Couples`
         fetchData(url)
     }
  }

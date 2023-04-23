@@ -56,7 +56,7 @@ password
 
     else{
         
-        let res = await fetch(`http://localhost:8080/users`)
+        let res = await fetch(`https://brandstore.onrender.com/users`)
        
  
         
@@ -111,7 +111,7 @@ password
     pass1,
     
    }
-   let res = await fetch(`http://localhost:8080/users`,{
+   let res = await fetch(`https://brandstore.onrender.com/users`,{
     method:"POST",
     body: JSON.stringify(obj),
     headers:{
