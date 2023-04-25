@@ -48,6 +48,8 @@ async function fetchData(url){
   getData(res)
 }
 
+
+
 async function getData(data){
   box.innerHTML=null
    data.forEach(el => {
@@ -78,7 +80,6 @@ async function getData(data){
 
 }
 
-
 async function changeStatus(el){
 
 let res = await fetch(`http://localhost:8080/hotels/${el.id}`,{
@@ -93,7 +94,6 @@ res = await res.json()
   
 
 fetchData()
-
 
 }
 
